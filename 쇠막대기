@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int>Solution(vector<int>heights) {
+	vector<int>answer;
+	int n = heights.size();
+
+	for (int i = n - 1; i >= 0; i--) {
+		bool b = false;
+		int x = heights[i];
+		for (int j = 1; j < n; j++) {
+			if (heights[i - j] > x) { answer.push_back(i - j + 1); }
+			b = true;
+			break;
+		}if (!b) { answer.push_back(0); }
+	}
+
+	reverse(answer.begin(), answer.end());
+	return answer;
+}
